@@ -1,20 +1,14 @@
 .App {
   text-align: center;
-}
-
-.App-logo {
-  height: 40vmin;
-  pointer-events: none;
-}
-
-@media (prefers-reduced-motion: no-preference) {
-  .App-logo {
-    animation: App-logo-spin infinite 20s linear;
-  }
+  font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+  background: linear-gradient(135deg, #f5f7fa 0%, #e4e8f0 100%);
+  min-height: 100vh;
+  padding: 20px;
 }
 
 .App-header {
-  background-color: #282c34;
+  background-color: #1a2a6c;
+  background-image: linear-gradient(120deg, #1a2a6c 0%, #b21f1f 50%, #fdbb2d 100%);
   min-height: 100vh;
   display: flex;
   flex-direction: column;
@@ -28,11 +22,530 @@
   color: #61dafb;
 }
 
-@keyframes App-logo-spin {
+/* App Title Styling */
+.app-title {
+  color: #1a2a6c;
+  margin: 30px 0;
+  font-weight: 600;
+  text-shadow: 1px 1px 2px rgba(0,0,0,0.1);
+  position: relative;
+  display: inline-block;
+}
+
+.app-title:after {
+  content: '';
+  position: absolute;
+  width: 60%;
+  height: 3px;
+  background: linear-gradient(90deg, #1a2a6c, transparent);
+  bottom: -10px;
+  left: 20%;
+  border-radius: 2px;
+}
+
+/* Card Styling */
+.app-card {
+  border-radius: 12px;
+  box-shadow: 0 8px 20px rgba(0, 0, 0, 0.1);
+  overflow: hidden;
+  transition: transform 0.3s ease, box-shadow 0.3s ease;
+  background: white;
+  margin: 20px auto;
+  max-width: 500px;
+}
+
+.app-card:hover {
+  transform: translateY(-5px);
+  box-shadow: 0 12px 25px rgba(0, 0, 0, 0.15);
+}
+
+.app-card-title {
+  padding: 15px;
+  border-bottom: 1px solid #f0f0f0;
+  font-weight: 600;
+  color: #1a2a6c;
+}
+
+.app-card-content {
+  padding: 15px;
+}
+
+/* Search Box Styling */
+.search-container {
+  max-width: 500px;
+  margin: 0 auto;
+  position: relative;
+}
+
+.search-input {
+  border-radius: 50px !important;
+  padding: 12px 20px !important;
+  box-shadow: 0 4px 10px rgba(0, 0, 0, 0.1) !important;
+  border: none !important;
+  transition: all 0.3s ease !important;
+}
+
+.search-input:focus,
+.search-input:hover {
+  box-shadow: 0 6px 15px rgba(0, 0, 0, 0.15) !important;
+  transform: translateY(-2px);
+}
+
+/* Update your App.css with these styles */
+
+/* Layout Styling */
+.app-layout {
+  min-height: 100vh;
+}
+
+.app-header {
+  background: linear-gradient(120deg, #1a2a6c 0%, #b21f1f 50%, #fdbb2d 100%);
+  padding: 0 24px;
+  display: flex;
+  align-items: center;
+  height: 64px;
+  position: sticky;
+  top: 0;
+  z-index: 100;
+  box-shadow: 0 2px 8px rgba(0, 0, 0, 0.15);
+}
+
+.app-title {
+  color: white !important;
+  margin: 0 !important;
+}
+
+.app-content {
+  padding: 24px;
+  background: #f5f7fa;
+}
+
+.app-sider {
+  background: #fff;
+  box-shadow: -2px 0 8px rgba(0, 0, 0, 0.06);
+  overflow: auto;
+  height: calc(100vh - 64px);
+  position: sticky;
+  top: 64px;
+  padding: 24px 0;
+}
+
+/* Keep your existing card and component styles */
+.app-card {
+  border-radius: 12px;
+  box-shadow: 0 8px 20px rgba(0, 0, 0, 0.1);
+  overflow: hidden;
+  transition: transform 0.3s ease, box-shadow 0.3s ease;
+  background: white;
+  margin-bottom: 24px;
+}
+
+/* Responsive adjustments */
+@media (max-width: 768px) {
+  .app-content {
+    padding: 16px;
+  }
+  
+  .app-card {
+    margin-bottom: 16px;
+  }
+}
+
+/* Fix the unclosed search-results block */
+.search-results {
+  /* This block was previously unclosed */
+}
+
+.search-results-container {
+  margin-top: 15px;
+  background: white;
+  border-radius: 12px;
+  overflow: hidden;
+  box-shadow: 0 6px 15px rgba(0, 0, 0, 0.1);
+  animation: fadeIn 0.3s ease-in-out;
+}
+
+.search-results-header {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  padding: 10px 15px;
+  background-color: #f5f7fa;
+  border-bottom: 1px solid #e8e8e8;
+}
+
+.search-result-content {
+  display: flex;
+  align-items: center;
+  width: 100%;
+  text-align: left;
+}
+
+/* Keep the rest of your existing styles */
+  
+  /* Enhanced history item styling */
+  .history-item {
+    transition: all 0.2s ease;
+  }
+  
+  .history-item:hover {
+    background-color: #f5f7fa;
+  }
+  
+  /* Animation for new items */
+  @keyframes highlightNew {
+    0% { background-color: rgba(26, 42, 108, 0.1); }
+    100% { background-color: transparent; }
+  }
+  
+  .history-item:first-child {
+    animation: highlightNew 2s ease-out;
+  }
+  
+  .search-result-item {
+    padding: 12px 20px !important;
+    transition: background-color 0.2s ease;
+    border-left: 3px solid transparent !important;
+  }
+
+.search-result-item:hover {
+  background-color: #f5f7fa !important;
+  border-left: 3px solid #1a2a6c !important;
+}
+
+/* History Styling */
+.history-container {
+  max-width: 500px;
+  margin: 30px auto;
+}
+
+.history-title {
+  color: #1a2a6c;
+  font-weight: 600;
+  margin-bottom: 15px;
+  position: relative;
+  display: inline-block;
+}
+
+.history-title:after {
+  content: '';
+  position: absolute;
+  width: 50%;
+  height: 2px;
+  background: linear-gradient(90deg, #1a2a6c, transparent);
+  bottom: -5px;
+  left: 25%;
+  border-radius: 2px;
+}
+
+.history-list {
+  border-radius: 12px;
+  overflow: hidden;
+  box-shadow: 0 6px 15px rgba(0, 0, 0, 0.1);
+}
+
+.history-item {
+  padding: 10px 20px !important;
+  transition: all 0.2s ease;
+  border-left: 3px solid transparent !important;
+}
+
+.history-item:hover {
+  background-color: #f5f7fa !important;
+  border-left: 3px solid #fdbb2d !important;
+}
+
+/* Map Container Styling */
+/* Map Container Animation Improvements */
+.map-container {
+  position: relative;
+  overflow: hidden;
+  transition: transform 1.5s cubic-bezier(0.19, 1, 0.22, 1);
+  border-radius: 12px;
+  box-shadow: 0 8px 20px rgba(0, 0, 0, 0.15);
+  transform-origin: center center;
+}
+
+.map-zooming {
+  transform: scale(1.08);
+}
+
+.map-iframe {
+  border-radius: 12px;
+  width: 100%;
+  height: 350px; /* Increased height for better visibility */
+  border: 0;
+  transition: opacity 0.5s ease;
+}
+
+.map-loading .map-iframe {
+  opacity: 0.6;
+}
+
+/* Enhanced pin styling */
+.map-pin {
+  position: absolute;
+  top: 50%;
+  left: 50%;
+  transform: translate(-50%, -100%);
+  z-index: 10;
+  outline: none;
+  filter: drop-shadow(0 5px 5px rgba(0, 0, 0, 0.2));
+}
+
+.map-pin-head {
+  width: 28px;
+  height: 28px;
+  background-color: #1a2a6c;
+  border: 3px solid white;
+  border-radius: 50%;
+  box-shadow: 0 0 0 rgba(26, 42, 108, 0.4);
+  cursor: pointer;
+  position: relative;
+  transition: all 0.3s ease;
+}
+
+.map-pin-shadow {
+  width: 0;
+  height: 0;
+  border-left: 14px solid transparent;
+  border-right: 14px solid transparent;
+  border-top: 14px solid #1a2a6c;
+  position: absolute;
+  left: 50%;
+  transform: translateX(-50%);
+  transition: all 0.3s ease;
+}
+
+@keyframes dropPin {
+  0% {
+    transform: translate(-50%, -500%);
+    opacity: 0;
+  }
+  50% {
+    transform: translate(-50%, -90%);
+    opacity: 1;
+  }
+  75% {
+    transform: translate(-50%, -105%);
+  }
+  90% {
+    transform: translate(-50%, -98%);
+  }
+  100% {
+    transform: translate(-50%, -100%);
+  }
+}
+
+@keyframes pulse {
+  0% {
+    box-shadow: 0 0 0 0 rgba(26, 42, 108, 0.7);
+    transform: scale(1);
+  }
+  50% {
+    box-shadow: 0 0 0 15px rgba(26, 42, 108, 0);
+    transform: scale(1.1);
+  }
+  100% {
+    box-shadow: 0 0 0 0 rgba(26, 42, 108, 0);
+    transform: scale(1);
+  }
+}
+
+.map-pin-drop {
+  animation: dropPin 0.8s cubic-bezier(0.215, 0.610, 0.355, 1.000);
+}
+
+/* Pulse effect when focused */
+.map-pin:focus .map-pin-head {
+  animation: pulse 1.5s infinite;
+}
+
+@keyframes dropPin {
+  0% {
+    transform: translate(-50%, -500%);
+    opacity: 0;
+  }
+  60% {
+    transform: translate(-50%, -90%);
+    opacity: 1;
+  }
+  80% {
+    transform: translate(-50%, -105%);
+  }
+  100% {
+    transform: translate(-50%, -100%);
+  }
+}
+
+@keyframes pulse {
+  0% {
+    box-shadow: 0 0 0 0 rgba(26, 42, 108, 0.7);
+  }
+  70% {
+    box-shadow: 0 0 0 20px rgba(26, 42, 108, 0);
+  }
+  100% {
+    box-shadow: 0 0 0 0 rgba(26, 42, 108, 0);
+  }
+}
+
+@keyframes fadeIn {
   from {
-    transform: rotate(0deg);
+    opacity: 0;
+    transform: translateY(10px);
   }
   to {
-    transform: rotate(360deg);
+    opacity: 1;
+    transform: translateY(0);
+  }
+}
+
+/* Responsive adjustments */
+@media (max-width: 576px) {
+  .app-card {
+    margin: 15px 10px;
+    max-width: calc(100% - 20px);
+  }
+  
+  .app-title {
+    font-size: 1.5rem;
+  }
+  
+  .map-iframe {
+    height: 250px;
+  }
+}
+
+
+/* Layout Styling */
+.app-layout {
+  display: flex;
+  max-width: 1200px;
+  margin: 0 auto;
+  gap: 20px;
+}
+
+.app-main-content {
+  flex: 1;
+  min-width: 0; /* Prevents flex items from overflowing */
+}
+
+.app-sidebar {
+  width: 300px;
+  flex-shrink: 0;
+}
+
+/* Update existing styles for the new layout */
+.search-container,
+.app-card {
+  max-width: 100%;
+  margin: 0 0 20px 0;
+}
+
+/* History Styling Improvements */
+.history-container {
+  max-width: 100%;
+  margin: 0;
+  padding: 16px;
+  background: white;
+  border-radius: 12px;
+  box-shadow: 0 4px 15px rgba(0, 0, 0, 0.08);
+}
+
+.history-header {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  margin-bottom: 16px;
+  padding-bottom: 8px;
+}
+
+.history-filter {
+  margin-bottom: 16px;
+}
+
+.history-content {
+  padding: 8px 0;
+}
+
+.history-header-section {
+  margin-bottom: 16px;
+  min-height: 24px; /* Ensures consistent height even when empty */
+}
+
+.history-list {
+  border-radius: 8px;
+  overflow: hidden;
+  box-shadow: 0 2px 8px rgba(0, 0, 0, 0.06);
+}
+
+.history-item {
+  padding: 16px !important;
+  transition: all 0.25s ease;
+  border-left: 3px solid transparent !important;
+  cursor: pointer;
+}
+
+.history-item:hover {
+  background-color: #f5f7fa !important;
+  border-left: 3px solid #1a2a6c !important;
+}
+
+.history-item-content {
+  display: flex;
+  align-items: center;
+  width: 100%;
+}
+
+.history-item-details {
+  flex: 1;
+  margin: 0 16px;
+}
+
+.history-item-actions {
+  display: flex;
+  gap: 4px;
+}
+
+/* Add these styles to your App.css file */
+
+/* Map Card Styling */
+.map-card {
+  transition: all 0.3s ease;
+  margin-bottom: 20px;
+  overflow: hidden;
+}
+
+/* Fullscreen Map Styling */
+.map-fullscreen {
+  position: fixed;
+  top: 0;
+  left: 0;
+  width: 100vw;
+  height: 100vh;
+  z-index: 1000;
+  margin: 0;
+  border-radius: 0;
+  animation: expandFullscreen 0.3s ease-out;
+}
+
+.map-fullscreen .map-iframe {
+  height: calc(100vh - 120px); /* Adjust for header and padding */
+  border-radius: 0;
+}
+
+.map-fullscreen .map-card-content {
+  height: calc(100vh - 64px); /* Adjust for header */
+}
+
+@keyframes expandFullscreen {
+  from {
+    opacity: 0.8;
+    transform: scale(0.8);
+  }
+  to {
+    opacity: 1;
+    transform: scale(1);
   }
 }
